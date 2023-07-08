@@ -1,7 +1,7 @@
 import 'package:chatgpt_clone/types.dart';
 import 'package:chatgpt_clone/utils.dart';
 
-import 'Decoupler.dart';
+import '../io/ui/Decoupler.dart';
 
 TProps update(TProps state, CAction<String, String, String> action) {
   print(state.input);

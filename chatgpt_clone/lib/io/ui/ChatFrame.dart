@@ -1,7 +1,7 @@
-import 'package:chatgpt_clone/EventWrapper.dart';
 import 'package:chatgpt_clone/types.dart';
 import 'package:flutter/material.dart';
 
+import 'EventWrapper.dart';
 import 'Messages.dart';
 
 class ChatFrame extends StatelessWidget {
