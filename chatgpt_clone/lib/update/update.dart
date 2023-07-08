@@ -1,12 +1,9 @@
 import 'package:chatgpt_clone/types.dart';
 import 'package:chatgpt_clone/utils.dart';
 
-import '../io/ui/Decoupler.dart';
+import '../utils/Decoupler.dart';
 
 TProps update(TProps state, CAction<String, String, String> action) {
-  print(state.input);
-  print('Reducer!');
-
   if (action.id.id == 'input') {
     if (action.type == 'change') {
       return TProps(
