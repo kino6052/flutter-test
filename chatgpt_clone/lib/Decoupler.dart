@@ -1,6 +1,6 @@
 import 'package:rxdart/rxdart.dart';
 
-typedef Reducer<PState, PAction, PControlId, PPayload> = PState Function(
+typedef Update<PState, PAction, PControlId, PPayload> = PState Function(
   PState state,
   CAction<PAction, PControlId, PPayload> action,
 );
@@ -32,12 +32,12 @@ class Decoupler<PState, PAction, PControlId, PPayload> {
       PublishSubject();
 
   List<void Function(PState)> _ioHandlers = [];
-  Reducer<PState, PAction, PControlId, PPayload> _reducer;
+  Update<PState, PAction, PControlId, PPayload> _update;
 
   Decoupler({
     required PState initialState,
-    required Reducer<PState, PAction, PControlId, PPayload> reducer,
-  })  : _reducer = reducer,
+    required Update<PState, PAction, PControlId, PPayload> update,
+  })  : _update = update,
         _stateSubject = BehaviorSubject.seeded(initialState) {
     _actionSubject.listen((action) {
       _ioQueueSubject.add([..._ioQueueSubject.value, action]);
@@ -66,7 +66,7 @@ class Decoupler<PState, PAction, PControlId, PPayload> {
     while (true) {
       try {
         final action = await io(state);
-        state = _reducer(state, action);
+        state = _update(state, action);
       } catch (e) {
         print(e);
         continue;
