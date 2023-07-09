@@ -1,8 +1,9 @@
 class TProps {
   final String input;
   final List<TMessage> messages;
+  final bool isLoading;
 
-  TProps({this.input = '', this.messages = const []});
+  TProps({this.input = '', this.messages = const [], this.isLoading = false});
 }
 
 enum MessageVariant { bot, user }

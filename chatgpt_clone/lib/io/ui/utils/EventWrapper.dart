@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Decoupler.dart';
-import 'main.dart';
+import '../../../utils/Decoupler.dart';
+import '../../../main.dart';
 
 typedef CustomWidgetBuilder = Widget Function(BuildContext,
     {void Function(String value)? onChanged,
@@ -9,16 +9,17 @@ typedef CustomWidgetBuilder = Widget Function(BuildContext,
 
 class EventWrapperWidget extends StatelessWidget {
   final CustomWidgetBuilder child;
+  final String id;
 
-  EventWrapperWidget({required this.child});
+  EventWrapperWidget({required this.child, required this.id});
 
   void onChanged(value) {
-    decoupler.sendAction(
-        CAction(type: 'change', id: TId(id: 'input'), payload: value));
+    decoupler
+        .sendAction(CAction(type: 'change', id: TId(id: id), payload: value));
   }
 
   void onFieldSubmitted(value) {
-    decoupler.sendAction(CAction(type: 'submit', id: TId(id: 'input')));
+    decoupler.sendAction(CAction(type: 'submit', id: TId(id: id)));
   }
 
   @override

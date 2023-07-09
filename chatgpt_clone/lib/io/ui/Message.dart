@@ -25,14 +25,13 @@ class Message extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          if (message.user == MessageVariant.user)
-            Avatar(
-              key: Key('test'),
-              variant: message.user == MessageVariant.user
-                  ? Variant.you
-                  : Variant.chatGPT,
-              // specify additional properties here
-            ),
+          Avatar(
+            key: Key(message.id),
+            variant: message.user == MessageVariant.user
+                ? Variant.you
+                : Variant.chatGPT,
+            // specify additional properties here
+          ),
           const SizedBox(width: 16.0),
           Text(
             message.text,

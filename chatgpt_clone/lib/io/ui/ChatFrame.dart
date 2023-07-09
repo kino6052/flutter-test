@@ -1,7 +1,7 @@
 import 'package:chatgpt_clone/types.dart';
 import 'package:flutter/material.dart';
 
-import 'EventWrapper.dart';
+import 'utils/EventWrapper.dart';
 import 'Messages.dart';
 
 class ChatFrame extends StatelessWidget {
@@ -49,19 +49,21 @@ class ChatFrame extends StatelessWidget {
                   width: 2,
                 ),
               ),
-              child: EventWrapperWidget(child: (BuildContext context,
-                  {void Function(String value)? onChanged,
-                  void Function(String value)? onFieldSubmitted}) {
-                return TextField(
-                    onChanged: onChanged,
-                    onSubmitted: onFieldSubmitted,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                    ));
-              }))
+              child: EventWrapperWidget(
+                  id: 'input',
+                  child: (BuildContext context,
+                      {void Function(String value)? onChanged,
+                      void Function(String value)? onFieldSubmitted}) {
+                    return TextField(
+                        onChanged: onChanged,
+                        onSubmitted: onFieldSubmitted,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                        ));
+                  }))
         ],
       ),
     );

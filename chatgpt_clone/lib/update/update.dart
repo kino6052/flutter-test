@@ -11,10 +11,22 @@ TProps update(TProps state, CAction<String, String, String> action) {
     }
 
     if (action.type == 'submit') {
-      return TProps(input: state.input, messages: [
+      return TProps(isLoading: true, input: '', messages: [
+        ...state.messages,
         TMessage(
             text: state.input, id: generateId(), user: MessageVariant.user),
-        ...state.messages
+      ]);
+    }
+  }
+
+  if (action.id.id == 'communication') {
+    if (action.type == 'io') {
+      return TProps(isLoading: false, messages: [
+        ...state.messages,
+        TMessage(
+            text: action.payload ?? '',
+            id: generateId(),
+            user: MessageVariant.bot),
       ]);
     }
   }

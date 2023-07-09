@@ -42,7 +42,6 @@ class _MessagesState extends State<Messages> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: 419.0,
       alignment: Alignment.topCenter,
       padding: EdgeInsets.only(top: 24, bottom: 24),
       child: ListView.builder(
@@ -51,6 +50,7 @@ class _MessagesState extends State<Messages> {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           return Message(
+            key: Key(widget.messages[index].id),
             message: widget.messages[index],
           );
         },

@@ -11,13 +11,23 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (variant) {
       case Variant.chatGPT:
-        return SizedBox(
-          height: 30,
+        return Container(
           width: 30,
-          child: Icon(
-            // replace Icons.adb with the icon that you have
-            Icons.adb,
-            size: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: Colors.green,
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            "B",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              letterSpacing: 0,
+              fontFamily: 'Segoe UI-Semibold',
+            ),
           ),
         );
       case Variant.you:
